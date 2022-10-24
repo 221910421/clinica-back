@@ -15,5 +15,10 @@ class Pacientes extends Model
         'usuario_id',
         'sexo',
         'alergias',
+        'enfermedades',
+        'medicamentos',
+        'peso',
+        'estatura',
+        'tipo_sangre',
     ];
 }
