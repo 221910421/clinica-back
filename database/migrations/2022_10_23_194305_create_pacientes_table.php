@@ -19,6 +19,11 @@ return new class extends Migration
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->string('sexo');
             $table->string('alergias');
+            $table->string('enfermedades');
+            $table->string('medicamentos');
+            $table->string('peso');
+            $table->string('estatura');
+            $table->string('tipo_sangre');
             $table->timestamps();
         });
     }
