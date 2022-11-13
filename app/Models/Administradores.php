@@ -13,6 +13,6 @@ class Administradores extends Model
 
     protected $fillable = [
         'usuario_id',
-        'especialidad',
+        'especialidad_id',
     ];
 }

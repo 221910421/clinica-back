@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Doctores;
+use App\Models\Auxiliar;
+use App\Models\Usuarios;
+use App\Models\Especialidades;
 
-class DoctoresController extends Controller
+class AuxiliaresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,8 @@ class DoctoresController extends Controller
     public function index()
     {
         try{
-        $doctores = Doctores::select("id", "usuario_id", "especialidad_id", "cedula_profesional")->get();
-        return response()->json($doctores, 200);
+        $auxiliares = Auxiliar::select("id", "usuario_id", "especialidad_id", "matricula")->get();
+        return response()->json($auxiliares, 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
         }
@@ -31,12 +33,12 @@ class DoctoresController extends Controller
     public function store(Request $request)
     {
         try{
-            $doctor = new Doctores();
-            $doctor->usuario_id = $request->usuario_id;
-            $doctor->especialidad_id = $request->especialidad_id;
-            $doctor->cedula_profesional = $request->cedula_profesional;
-            $doctor->save();
-            return response()->json('Doctor creado correctamente', 200);
+            $auxiliar = new Auxiliar();
+            $auxiliar->usuario_id = $request->usuario_id;
+            $auxiliar->especialidad_id = $request->especialidad_id;
+            $auxiliar->matricula = $request->matricula;
+            $auxiliar->save();
+            return response()->json('Auxiliar creado correctamente', 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
         }
@@ -51,8 +53,8 @@ class DoctoresController extends Controller
     public function show($id)
     {
         try{
-            $doctor = Doctores::select("id", "usuario_id", "especialidad_id", "cedula_profesional")->where('id', $id)->first();
-            return response()->json($doctor, 200);
+            $auxiliar = Auxiliar::select("id", "usuario_id", "especialidad_id", "matricula")->where('id', $id)->first();
+            return response()->json($auxiliar, 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
         }
@@ -68,12 +70,12 @@ class DoctoresController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $doctor = Doctores::find($id);
-            $doctor->usuario_id = $request->usuario_id;
-            $doctor->especialidad_id = $request->especialidad_id;
-            $doctor->cedula_profesional = $request->cedula_profesional;
-            $doctor->save();
-            return response()->json('Doctor actualizado correctamente', 200);
+            $auxiliar = Auxiliar::find($id);
+            $auxiliar->usuario_id = $request->usuario_id;
+            $auxiliar->especialidad_id = $request->especialidad_id;
+            $auxiliar->matricula = $request->matricula;
+            $auxiliar->save();
+            return response()->json('Auxiliar actualizado correctamente', 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
         }
@@ -88,9 +90,9 @@ class DoctoresController extends Controller
     public function destroy($id)
     {
         try{
-            $doctor = Doctores::find($id);
-            $doctor->delete();
-            return response()->json('Doctor eliminado correctamente', 200);
+            $auxiliar = Auxiliar::find($id);
+            $auxiliar->delete();
+            return response()->json('Auxiliar eliminado correctamente', 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
         }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
-            $table->enum('roles', ['Administrador', 'Doctor', 'Paciente']);
+            $table->enum('roles', ['Administrador', 'Doctor', 'Paciente', 'Auxiliar']);
             $table->string('email')->unique();
             $table->date('fecha_nacimiento');
             $table->string('telefono');

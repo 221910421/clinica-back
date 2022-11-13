@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Administradores;
 
 class AdministradoresController extends Controller
 {
@@ -14,7 +15,7 @@ class AdministradoresController extends Controller
     public function index()
     {
         try{
-        $administradores = Administradores::select("id", "usuario_id", "especialidad")->get();
+        $administradores = Administradores::select("id", "usuario_id", "especialidad_id")->get();
         return response()->json($administradores, 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
@@ -32,7 +33,7 @@ class AdministradoresController extends Controller
         try{
             $administrador = new Administradores();
             $administrador->usuario_id = $request->usuario_id;
-            $administrador->especialidad = $request->especialidad;
+            $administrador->especialidad_id = $request->especialidad_id;
             $administrador->save();
             return response()->json('Administrador creado correctamente', 200);
         }catch(\Exception $e){
@@ -49,7 +50,7 @@ class AdministradoresController extends Controller
     public function show($id)
     {
         try{
-            $administrador = Administradores::select("id", "usuario_id", "especialidad")->where('id', $id)->first();
+            $administrador = Administradores::select("id", "usuario_id", "especialidad_id")->where('id', $id)->first();
             return response()->json($administrador, 200);
         }catch(\Exception $e){
             return response()->json($e, 500);
@@ -68,7 +69,7 @@ class AdministradoresController extends Controller
         try{
             $administrador = Administradores::find($id);
             $administrador->usuario_id = $request->usuario_id;
-            $administrador->especialidad = $request->especialidad;
+            $administrador->especialidad_id = $request->especialidad_id;
             $administrador->save();
             return response()->json('Administrador actualizado correctamente', 200);
         }catch(\Exception $e){
