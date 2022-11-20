@@ -11,7 +11,11 @@ use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\AuxiliaresController;
 use App\Http\Controllers\ConsultasController;
 use App\Http\Controllers\AdministradoresController;
-
+use App\Http\Controllers\CitasController;
+use App\Http\Controllers\MedicamentosController;
+use App\Http\Controllers\AuxiliaresEspecialidadesController;
+use App\Http\Controllers\ConsultoriosController;
+use App\Http\Controllers\ServiciosController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('usuarios', UsuariosController::class);
