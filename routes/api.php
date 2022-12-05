@@ -23,12 +23,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('doctores', DoctoresController::class);
     Route::apiResource('pacientes', PacientesController::class);
     Route::apiResource('citas', CitasController::class);
-    Route::apiResource('medicamentos', MedicamentosController::class);
     Route::apiResource('auxiliares', AuxiliaresController::class);
     Route::apiResource('consultorios', ConsultoriosController::class);
     Route::apiResource('administradores', AdministradoresController::class);
     Route::apiResource('servicios', ServiciosController::class);
 });
+
+Route::apiResource('medicamentos', MedicamentosController::class);
 
 Route::post('/login', function (Request $request) {
     $usuario = Usuarios::where('email', $request->email)->first();
