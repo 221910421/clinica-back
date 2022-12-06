@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Medicamentos;
+use Illuminate\Database\Eloquent\Collection;
+use Http;
 
 class MedicamentosController extends Controller
 {
@@ -39,7 +41,7 @@ class MedicamentosController extends Controller
             $medicamento->save();
             return response()->json('Medicamento creado correctamente', 200);
         }catch(\Exception $e){
-            return response()->json($e, 500);
+            return response()->json('$e', 500);
         }
     }
 
@@ -55,7 +57,8 @@ class MedicamentosController extends Controller
             $medicamento = Medicamentos::select("id", "nombre", "clasificacion", "presentacion", "dosis")->where('id', $id)->first();
             return response()->json($medicamento, 200);
         }catch(\Exception $e){
-            return response()->json($e, 500);
+            // return response()->json($e, 500);
+            // return view('welcome');
         }
     }
 
@@ -97,4 +100,11 @@ class MedicamentosController extends Controller
             return response()->json($e, 500);
         }
     }
+
+    public function _construct(){
+        $this->middleware('auth');
+    }
+
+
+    
 }

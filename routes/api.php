@@ -16,6 +16,7 @@ use App\Http\Controllers\MedicamentosController;
 use App\Http\Controllers\AuxiliaresEspecialidadesController;
 use App\Http\Controllers\ConsultoriosController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\apiController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('usuarios', UsuariosController::class);
@@ -28,8 +29,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('administradores', AdministradoresController::class);
     Route::apiResource('servicios', ServiciosController::class);
 });
-
-Route::apiResource('medicamentos', MedicamentosController::class);
+// Route::apiResource('medicamentos', MedicamentosController::class);
+    Route::get('/medicamentos', [MedicamentosController::class, 'index']); // mostrar todas la actividades
+    Route::post('/medicamentos', [MedicamentosController::class, 'store']); // crear un registro
+    Route::get('/medicamentos/{id}', [MedicamentosController::class, 'show']); // mostrar un registro
+    Route::put('/medicamentos', [MedicamentosController::class, 'update']); // actuliza un registro
+    Route::delete('/medicamentos/{id}', [MedicamentosController::class, 'destroy']);// borra un registro
 
 Route::post('/login', function (Request $request) {
     $usuario = Usuarios::where('email', $request->email)->first();
