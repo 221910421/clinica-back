@@ -18,7 +18,7 @@ class MedicamentosController extends Controller
     {
         try{
             $medicamentos = Medicamentos::select("id", "nombre", "clasificacion", "presentacion", "dosis")->get();
-            return response()->json($medicamentos, 200);
+            return response()->json(['success' => "true", 'response'=>$medicamentos], 202);
         }catch(\Exception $e){
             return response()->json($e, 500);
         }
