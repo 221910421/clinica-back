@@ -41,7 +41,7 @@ class MedicamentosController extends Controller
             $medicamento->save();
             return response()->json('Medicamento creado correctamente', 200);
         }catch(\Exception $e){
-            return response()->json('$e', 500);
+            return response()->json($e, 500);
         }
     }
 
