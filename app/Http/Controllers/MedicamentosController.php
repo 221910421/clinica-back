@@ -39,7 +39,7 @@ class MedicamentosController extends Controller
             $medicamento->presentacion = $request->presentacion;
             $medicamento->dosis = $request->dosis;
             $medicamento->save();
-            return response()->json('Medicamento creado correctamente', 200);
+            return response()->json(['success' => "true"], 200);
         }catch(\Exception $e){
             return response()->json($medicamento, 500);
         }
@@ -57,7 +57,7 @@ class MedicamentosController extends Controller
             $medicamento = Medicamentos::select("id", "nombre", "clasificacion", "presentacion", "dosis")->where('id', $id)->first();
             return response()->json(['success' => "true", 'response'=>$medicamento], 202);
         }catch(\Exception $e){
-            // return response()->json($e, 500);
+            return response()->json($e, 500);
             // return view('welcome');
         }
     }
