@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/medicamentos', [MedicamentosController::class, 'index']); // mostrar todas la actividades
     Route::post('/medicamentos', [MedicamentosController::class, 'store']); // crear un registro
     Route::get('/medicamentos/{id}', [MedicamentosController::class, 'show']); // mostrar un registro
-    Route::put('/medicamentos', [MedicamentosController::class, 'update']); // actuliza un registro
+    Route::put('/medicamentos/{id}', [MedicamentosController::class, 'update']); // actuliza un registro
     Route::delete('/medicamentos/{id}', [MedicamentosController::class, 'destroy']);// borra un registro
 
 Route::post('/login', function (Request $request) {
